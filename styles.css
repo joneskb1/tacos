@@ -1,12 +1,11 @@
-/* need to do media query and menu button */
-
-
 /* general */
 
 * {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+
 }
+
 
 body {
     background: rgb(240,6,239);
@@ -14,6 +13,7 @@ body {
     background-repeat: no-repeat  no-repeat repeat;
     margin: 50px;
     background-attachment: fixed;
+    font-size: 15px;
 }
 
  p {
@@ -23,28 +23,42 @@ body {
 .wrapper {
     display: grid;
     grid-gap: 20px;
+    justify-content: center;
+
+ 
 }
 
+button {
+    background: #ffcf33;
+    border: 0;
+    padding: 10px 20px;
+  } 
+
+  
 /* nav */
 
-.nav p {
+[aria-controls="menu-list"] {
     display: none;
-}
+  }
 
-.nav ul li, .nav ul li a {
+.nav ul li a {
     text-decoration: none;
     color: black;
     font-weight: bolder;
+    display: block;
+}
+
+.nav ul li {
+    padding: 1rem;
     background-color: #FFCF33;
     list-style-type: none;
     text-align: center;
-    padding: 1rem;
 }
 
 
 .nav ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     padding: 0;
     grid-gap: 10px;
 }
@@ -111,7 +125,7 @@ body {
 
 .feature-box {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 20px;
 }
 
@@ -164,7 +178,7 @@ body {
 
 .instant-grams {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 20px;
 
 }
@@ -196,6 +210,78 @@ body {
     height: 10px;
     display: block;
     background: linear-gradient(90deg, rgba(255,185,0,0.9126838235294118) 40%, rgba(240,6,239,0) 98%);;
+
+
+}
+
+
+/*  media 1000 700 500 */ 
+
+@media (max-width: 1000px) {
+
+    nav {
+        perspective: 800px;
+      }
+
+      [aria-controls="menu-list"] {
+        display: block;
+        margin-bottom: 10px;
+      }
+    
+      .nav ul {
+        max-height: 0;
+        overflow: hidden;
+        transform: rotateX(90deg);
+        transition: all 0.5s;
+      }
+    
+      [aria-expanded="true"] ~ ul {
+        display: grid;
+        max-height: 500px;
+        transform: rotateX(0);
+      }
+    
+      [aria-expanded="false"] .close {
+        display: none;
+      }
+    
+      [aria-expanded="true"] .close {
+        display: inline-block;
+      }
+    
+      [aria-expanded="true"] .open {
+        display: none;
+      }
+    
+
+}
+
+@media (max-width: 700px) {
+
+    .top {
+        grid-template-areas: "hero hero" 
+        "price-taco price-kombucha";
+    }
+
+    .featured-taco {
+        grid-template-columns: 1fr;
+      }
+
+}
+
+@media (max-width: 500px) {
+
+    .top {
+        grid-template-areas: 
+        "hero" 
+        "price-taco" 
+        "price-kombucha";
+    }
+
+    .features {
+        padding: 2rem;
+    }
+
 
 
 }

@@ -9,8 +9,12 @@
 <body>
 <div class="wrapper">
     <nav class="nav">
-        <p>Menu</p>
-        <ul>
+        <button aria-expanded="false" aria-controls="menu-list">
+            <span class="open">☰</span>
+            <span class="close">×</span>
+            Menu
+          </button>
+        <ul id="menu-list">
             <li><a href=#>TACOS</a></li>
             <li><a href=#>BEERS</a></li>
             <li><a href=#>WINES</a></li>
@@ -63,7 +67,7 @@
         <img class="featured-taco-img" src="images/queso-taco.png" alt="a queso taco">
         <div class="featured-text">
             <h2>Featured Taco</h2>
-            <p>Slim Profile, easy to hold and loaded with cheese.</br> This is the one you have been waiting for</p>
+            <p>Slim Profile, easy to hold and loaded with cheese.<br> This is the one you have been waiting for</p>
             <a class="learn-more" href=#>Learn More &#8594; </a>
         </div>
     </div>
@@ -79,5 +83,15 @@
         <img class="gram-img" src="images/gram7.jpeg" alt="a photo of the eiffel tower">
      </div>
 </div>
+<script>
+    const navButton = document.querySelector('button[aria-expanded]');
+
+    function toggleNav({ target }) {
+      const expanded = target.getAttribute('aria-expanded') === 'true' || false;
+      navButton.setAttribute('aria-expanded', !expanded);
+    }
+
+    navButton.addEventListener('click', toggleNav);
+  </script>
 </body>
 </html>
